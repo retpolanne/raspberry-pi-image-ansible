@@ -1,0 +1,15 @@
+[submodule "poky"]
+	path = poky
+	url = git://git.yoctoproject.org/poky
+[submodule "meta-raspberrypi"]
+	path = meta-raspberrypi
+	url = git@github.com:agherzan/meta-raspberrypi.git
+[submodule "meta-virtualization"]
+	path = meta-virtualization
+	url = git://git.yoctoproject.org/meta-virtualization
+[submodule "meta-openembedded"]
+	path = meta-openembedded
+	url = git@github.com:openembedded/meta-openembedded.git
+[submodule "meta-cloud-services"]
+	path = meta-cloud-services
+	url = git://git.yoctoproject.org/meta-cloud-services

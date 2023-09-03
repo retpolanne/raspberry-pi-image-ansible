@@ -1,0 +1,55 @@
+From 2111a89f6f00a6f5fc1a001d02b4fa8e56e3ee28 Mon Sep 17 00:00:00 2001
+From: Anne Macedo <retpolanne@posteo.net>
+Date: Sat, 26 Aug 2023 14:10:45 -0300
+Subject: [PATCH] consul: fixes consul git urls
+
+Fixes error:
+
+URL: git://github.com/hashicorp/consul-migrate.git;branch=master uses
+git protocol which is no longer supported by github.
+Please change to ;protocol=https in the url.
+
+when running bitbake with the meta-cloud-services layer.
+
+Signed-off-by: Anne Macedo <retpolanne@posteo.net>
+---
+ .../consul/consul-migrate_git.bb                 | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/recipes-connectivity/consul/consul-migrate_git.bb b/recipes-connectivity/consul/consul-migrate_git.bb
+index 7d784c2a..1393c912 100644
+--- a/recipes-connectivity/consul/consul-migrate_git.bb
++++ b/recipes-connectivity/consul/consul-migrate_git.bb
+@@ -4,7 +4,7 @@ LICENSE = "BSD & MPL-2.0 & MIT"
+ LIC_FILES_CHKSUM = "file://src/github.com/hashicorp/consul-migrate/LICENSE;md5=b278a92d2c1509760384428817710378"
+ 
+ GO_IMPORT = "github.com/hashicorp/consul-migrate"
+-SRC_URI = "git://${GO_IMPORT}.git;branch=master"
++SRC_URI = "https://${GO_IMPORT}.git;branch=master"
+ SRCREV = "678fb10cdeae25ab309e99e655148f0bf65f9710"
+ 
+ S = "${WORKDIR}/git"
+@@ -18,13 +18,13 @@ SRCREV_bolt = "c6ba97b89e0454fec9aa92e1d33a4e2c5fc1f631"
+ SRCREV_go-msgpack = "fa3f63826f7c23912c15263591e65d54d080b458"
+ 
+ SRC_URI += " \
+-   git://github.com/hashicorp/raft;name=raft;destsuffix=git/src/github.com/hashicorp/raft;branch=master;protocol=https \
+-   git://github.com/armon/go-metrics;name=go-metrics;destsuffix=git/src/github.com/armon/go-metrics;branch=master;protocol=https \
+-   git://github.com/hashicorp/raft-boltdb;name=raft-boltdb;destsuffix=git/src/github.com/hashicorp/raft-boltdb;branch=master;protocol=https \
+-   git://github.com/hashicorp/raft-mdb;name=raft-mdb;destsuffix=git/src/github.com/hashicorp/raft-mdb;branch=master;protocol=https \
+-   git://github.com/armon/gomdb;name=gomdb;destsuffix=git/src/github.com/armon/gomdb;branch=master;protocol=https \
+-   git://github.com/boltdb/bolt;name=bolt;destsuffix=git/src/github.com/boltdb/bolt;branch=master;protocol=https \
+-   git://github.com/hashicorp/go-msgpack;name=go-msgpack;destsuffix=git/src/github.com/hashicorp/go-msgpack;branch=master;protocol=https \
++   https://github.com/hashicorp/raft;name=raft;destsuffix=git/src/github.com/hashicorp/raft;branch=master;protocol=https \
++   https://github.com/armon/go-metrics;name=go-metrics;destsuffix=git/src/github.com/armon/go-metrics;branch=master;protocol=https \
++   https://github.com/hashicorp/raft-boltdb;name=raft-boltdb;destsuffix=git/src/github.com/hashicorp/raft-boltdb;branch=master;protocol=https \
++   https://github.com/hashicorp/raft-mdb;name=raft-mdb;destsuffix=git/src/github.com/hashicorp/raft-mdb;branch=master;protocol=https \
++   https://github.com/armon/gomdb;name=gomdb;destsuffix=git/src/github.com/armon/gomdb;branch=master;protocol=https \
++   https://github.com/boltdb/bolt;name=bolt;destsuffix=git/src/github.com/boltdb/bolt;branch=master;protocol=https \
++   https://github.com/hashicorp/go-msgpack;name=go-msgpack;destsuffix=git/src/github.com/hashicorp/go-msgpack;branch=master;protocol=https \
+ "
+ 
+ inherit go
+-- 
+2.41.0
+
